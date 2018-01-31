@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180131031144) do
+ActiveRecord::Schema.define(version: 20180131051504) do
+
+  create_table "todo_tasks", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "owner_type"
+    t.integer  "owner_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["owner_type", "owner_id"], name: "index_todo_tasks_on_owner_type_and_owner_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
